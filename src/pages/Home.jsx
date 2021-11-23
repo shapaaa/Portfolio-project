@@ -84,10 +84,10 @@ const Home = () => {
             <Info>Software Engineer @rtCamp</Info>
             <Info>amateur blogger | empath | occasional traveller</Info>
             <SocialInfo>
-                <a target='_blank' href='https://github.com/shapaaa'> <Github /> </a>
-                <a target='_blank' href='https://twitter.com/Shardul52754488'> <Twitter /></a>
-                <a target='_blank' href='https://www.linkedin.com/in/shardul-pathak-718694176/'><Linkedin /> </a>
-                <a target='_blank' href='https://dev.to/shapaaa'> <Dev /></a>
+                <a target='_blank' rel="noreferrer" href='https://github.com/shapaaa'> <Github /> </a>
+                <a target='_blank' rel="noreferrer" href='https://twitter.com/Shardul52754488'> <Twitter /></a>
+                <a target='_blank' rel="noreferrer" href='https://www.linkedin.com/in/shardul-pathak-718694176/'><Linkedin /> </a>
+                <a target='_blank' rel="noreferrer" href='https://dev.to/shapaaa'> <Dev /></a>
             </SocialInfo>
         </Container>
     )
