@@ -10,19 +10,15 @@ const GlobalStyle = createGlobalStyle`
 }
 :root{
 font-size:62.5%;
-font-family: var(--poppins-font);
---orange:#ff9100;
+font-family: 'Roboto', sans-serif;
+--purp:#6C63FF;
 --black:#413f54;
---poppins-font:'Poppins', sans-serif;
---playfair-font: 'Playfair Display', serif;
+--secondary-font:'Poppins', sans-serif;
+--primary-font:'Playfair Display', serif;
 }
-html:focus-within {
-  scroll-behavior: smooth;
-}
-body {
-  min-height: 100vh;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
+html,body {
+  padding: 0;
+  margin: 0;
 }
 img,
 picture {
