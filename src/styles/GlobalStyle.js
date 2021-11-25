@@ -11,10 +11,12 @@ const GlobalStyle = createGlobalStyle`
 :root{
 font-size:62.5%;
 font-family: 'Roboto', sans-serif;
---purp:#6C63FF;
---black:#413f54;
 --secondary-font:'Poppins', sans-serif;
 --primary-font:'Playfair Display', serif;
+--purp:#6C63FF;
+--black:#413f54;
+--gray:#535661;
+--color-stroke: #d2d3d7;
 }
 html,body {
   padding: 0;

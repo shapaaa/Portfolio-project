@@ -1,8 +1,8 @@
 import styled, { keyframes } from "styled-components";
-import Github from '../assets/github'
-import Twitter from '../assets/twitter'
-import Linkedin from '../assets/linkedin'
-import Dev from '../assets/dev'
+import Github from '../assets/icons/github'
+import Twitter from '../assets/icons/twitter'
+import Linkedin from '../assets/icons/linkedin'
+import Dev from '../assets/icons/dev'
 
 const Container = styled.section`
 display: flex;
@@ -75,11 +75,11 @@ transform-origin: 70% 70%;
 const Home = () => {
     return (
         <Container>
-            <GreetContainer>
+            {/* <GreetContainer>
                 <Name>Hi, </Name>
                 <WavingHand>👋 </WavingHand>
                 <Name> I'm Shardul</Name>
-            </GreetContainer>
+            </GreetContainer> */}
             <Image src='https://www.dhilipkmr.dev/static/profilePic-162001e6f25969e3061354534123fea9.png' />
             <Info>Software Engineer @rtCamp</Info>
             <Info>amateur blogger | empath | occasional traveller</Info>

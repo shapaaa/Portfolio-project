@@ -4,36 +4,53 @@ import styled, { css } from "styled-components";
 
 const Container = styled.div`
 position: relative;
-width:80vw;
-margin:0 auto;
-@media only screen and (min-width:701px)
-{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+display: flex;
+justify-content: space-around;
+border-bottom: 1px solid var(--color-stroke);
+min-height:8rem;
+align-items:center;
 `
 const NavContainer = styled.div`
-height:10vh;
-display: flex;
-width: 100%;
-justify-content: flex-start;
-align-items: center;
 position: relative;
 background-color: white;
 z-index:1000;
 @media only screen and (max-width:700px)
 {
+    width: 100%;
+    display: flex;
+    align-items: center;
     justify-content: space-around;
 }
 `
-const NavLink = styled(Link)`
+const NavLink = styled( Link )`
 text-decoration: none;
-color: black;
+font-weight: 400px;
+color:var(--gray);
+width:fit-content;
+display: block;
+position: relative;
+&::after{
+    content: "";
+    position: absolute;
+    bottom:-10px;
+    left:0;
+    width:0;
+    background-color:black;
+    height:2px;
+    transition: width .2s ease-out;
+}
+&:hover{
+    color:black;
+}
+&:hover::after{
+    width:100%;
+}
 `
 const Title = styled.h1`
-font-size: 2.5rem;
-font-family: var(--secondary-font);
+font-size: 2.8rem;
+font-weight: bolder;
+font-family: 'Open Sans';
+color:black;
 `
 const TitleContainer = styled.div`
 justify-self: baseline;
@@ -46,28 +63,30 @@ display: flex;
 justify-content:center;
 @media only screen and (max-width:700px)
 {
-    width:100vw;
     position: absolute;
     z-index:2;
     padding:0;
-    top:-100px;
-    height:20vh;
-    flex-direction: column;
+    top:-1000px;
+    width:100%;
+    height:80vh;
     background-color: white;
-${(props)=>props.animated && css`
-top:64px;
+    justify-content: flex-start;
+    flex-direction: column;
+${( props ) => props.animated && css`
+top:65px;
 `}
 } 
 `
 const ListElement = styled.li`
 margin: 0 15px; 
+padding: 5px 0;
+
 @media only screen and (max-width:700px)
 {
-    margin:5px 0px;
-}
-&:hover
-{
-    color: var(--purp);
+    margin:0;
+    padding: 20px 0px 20px 20px ;
+    display:block;
+    border-bottom: 1px solid var(--color-stroke);
 }
 `
 const Menu = styled.div`
@@ -86,33 +105,33 @@ border-bottom: 2px solid black;
 width:25px;
 height: 6px;
 transition: transform .3s 0s ease-out,opacity .3s 0s ease-out;
-${(props)=>
-    props.animated && props.one && css`
+${( props ) =>
+        props.animated && props.one && css`
        transform:scale3d(1,1,1) translate3d(-.8px,5.7px,0px) rotateZ(-45deg);
     `
-}
-${(props)=>
-    props.animated && props.two && css`
+    }
+${( props ) =>
+        props.animated && props.two && css`
        opacity:0;
     `
-} 
-${(props)=>
-    props.animated && props.three && css`
+    } 
+${( props ) =>
+        props.animated && props.three && css`
        transform: scale3d(1,1,1) translate3d(.8px,-5.7px,0px) rotateZ(45deg);
     `
-} 
+    } 
 `
 const Header = () => {
-    const [animate,setAnimate] = useState(false);
-    const handleClick = ()=>{
-        setAnimate(!animate)
+    const [animate, setAnimate] = useState( false );
+    const handleClick = () => {
+        setAnimate( !animate )
     }
     return (
         <Container>
             <NavContainer>
                 <TitleContainer>
                     <NavLink to='/'>
-                        <Title>Shardul.Pathak</Title>
+                        <Title>Shardul Pathak</Title>
                     </NavLink>
                 </TitleContainer>
                 <Menu onClick={handleClick}>
@@ -121,11 +140,17 @@ const Header = () => {
                     <MenuLine animated={animate} three></MenuLine>
                 </Menu>
             </NavContainer>
-                <List animated={animate}>
-                    <NavLink to='/about'><ListElement>About</ListElement></NavLink>
-                    <NavLink to='/portfolio'><ListElement>Portfolio</ListElement></NavLink>
-                    <NavLink to='/blogs'><ListElement>Blogs</ListElement></NavLink>
-                </List>
+            <List animated={animate}>
+                <ListElement>
+                    <NavLink to='/about'>About</NavLink>
+                </ListElement>
+                <ListElement>
+                    <NavLink to='/work'>Work</NavLink>
+                </ListElement>
+                <ListElement>
+                    <NavLink to='/blogs'>Blogs</NavLink>
+                </ListElement>
+            </List>
         </Container>
     )
 }
