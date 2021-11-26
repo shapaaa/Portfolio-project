@@ -1,14 +1,30 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
+const lefttoright = keyframes`
+100%{
+width:100%;
+}
+`
 
 const Container = styled.div`
 position: relative;
 display: flex;
 justify-content: space-around;
-border-bottom: 1px solid var(--color-stroke);
-min-height:8rem;
+height:8rem;
 align-items:center;
+padding-top:10px;
+&::after{
+    content: "";
+    position: absolute;
+    bottom:-10px;
+    left:0;
+    width:0;
+    background-color:var(--color-stroke);
+    height:2px;
+    transition: width .2s ease-out;
+    animation: ${lefttoright} .8s 10ms forwards ease;
+}
 `
 const NavContainer = styled.div`
 position: relative;
@@ -29,10 +45,14 @@ color:var(--gray);
 width:fit-content;
 display: block;
 position: relative;
+font-size: 1.8rem;
 &::after{
     content: "";
     position: absolute;
     bottom:-10px;
+    ${({title})=> title && css`
+    bottom:-2px;
+    ` };
     left:0;
     width:0;
     background-color:black;
@@ -46,35 +66,49 @@ position: relative;
     width:100%;
 }
 `
+const show = keyframes`
+100%{
+    opacity:1;
+}
+`
 const Title = styled.h1`
-font-size: 2.8rem;
-font-weight: bolder;
-font-family: 'Open Sans';
+font-size: 3rem;
+margin: 0;
+font-family: 'Freehand','Open Sans',sans-serif;
 color:black;
+opacity: 0;
+animation: ${show} .22s .8s 1 ease-out forwards;
 `
 const TitleContainer = styled.div`
 justify-self: baseline;
 `
 const List = styled.ul`
 list-style: none;
-font-size: 1.8rem;
+font-size: 2rem;
+font-weight: 500;
 transition: all .25s 0s ease-in;
 display: flex;
 justify-content:center;
+@media only screen and (min-width:701px)
+{
+    opacity: 0;
+    animation: ${show} .22s .82s 1 ease-out forwards;
+}
 @media only screen and (max-width:700px)
 {
     position: absolute;
     z-index:2;
     padding:0;
+    margin: 0;
     top:-1000px;
     width:100%;
-    height:80vh;
+    height: calc(100vh - 8rem);
     background-color: white;
     justify-content: flex-start;
     flex-direction: column;
-${( props ) => props.animated && css`
-top:65px;
-`}
+    ${( props ) => props.animated && css`
+    top:9rem;
+    `}
 } 
 `
 const ListElement = styled.li`
@@ -95,6 +129,11 @@ flex-direction: column;
 justify-content: space-between;
 margin-bottom: 6px;
 cursor: pointer;
+@media only screen and (max-width:700px)
+{
+    opacity: 0;
+    animation: ${show} .22s .82s 1 ease-out forwards;
+} 
 @media only screen and (min-width:701px)
 {
     display: none;
@@ -130,8 +169,8 @@ const Header = () => {
         <Container>
             <NavContainer>
                 <TitleContainer>
-                    <NavLink to='/'>
-                        <Title>Shardul Pathak</Title>
+                    <NavLink title to='/'>
+                        <Title>ShardulPathak</Title>
                     </NavLink>
                 </TitleContainer>
                 <Menu onClick={handleClick}>
