@@ -14,7 +14,6 @@ font-family: 'Open Sans', sans-serif;
 --secondary-font:'Poppins', sans-serif;
 --primary-font:'Playfair Display', serif;
 --purp:#6C63FF;
-;
 --gray:#535661;
 --color-stroke: #d2d3d7;
 }
