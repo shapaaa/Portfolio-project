@@ -48,7 +48,7 @@ const Home = () => {
         <Container>
             <Image src='https://www.dhilipkmr.dev/static/profilePic-162001e6f25969e3061354534123fea9.png' />
             <Info>Software Engineer @rtCamp</Info>
-            <Info>amateur blogger | empath | occasional traveller</Info>
+            <Info>lifelong learner | amateur blogger | empath | occasional traveller</Info>
             <SocialInfo>
                 <a target='_blank' rel="noreferrer" href='https://github.com/shapaaa'> <Github /> </a>
                 <a target='_blank' rel="noreferrer" href='https://twitter.com/Shardul52754488'> <Twitter /></a>

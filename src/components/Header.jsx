@@ -1,30 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled, { css, keyframes } from "styled-components";
-const lefttoright = keyframes`
-100%{
-width:100%;
-}
-`
 
 const Container = styled.div`
 position: relative;
 display: flex;
 justify-content: space-around;
+height:9rem;
+@media only screen and (max-width:700px){
 height:8rem;
-align-items:center;
-padding-top:10px;
-&::after{
-    content: "";
-    position: absolute;
-    bottom:-10px;
-    left:0;
-    width:0;
-    background-color:var(--color-stroke);
-    height:2px;
-    transition: width .2s ease-out;
-    animation: ${lefttoright} .8s 10ms forwards ease;
 }
+align-items:center;
+border-bottom: 1px solid var(--color-stroke);
 `
 const NavContainer = styled.div`
 position: relative;
@@ -40,27 +27,23 @@ z-index:1000;
 `
 const NavLink = styled( Link )`
 text-decoration: none;
-font-weight: 400px;
-color:var(--gray);
+font-weight: 500px;
+color:black;
 width:fit-content;
 display: block;
 position: relative;
-font-size: 1.8rem;
 &::after{
     content: "";
     position: absolute;
     bottom:-10px;
-    ${({title})=> title && css`
-    bottom:-2px;
-    ` };
     left:0;
     width:0;
-    background-color:black;
+    background-color:black ;
+    ${({title})=> title && css`
+    background-color:#4433FF;
+    ` };
     height:2px;
-    transition: width .2s ease-out;
-}
-&:hover{
-    color:black;
+    transition: width .2s ease-out,font-weight .2s ease-out;
 }
 &:hover::after{
     width:100%;
@@ -72,11 +55,11 @@ const show = keyframes`
 }
 `
 const Title = styled.h1`
-font-size: 3rem;
+font-size: clamp(24px,3vw,28px);
 margin: 0;
-font-family: 'Freehand','Open Sans',sans-serif;
-color:black;
 opacity: 0;
+color:blue;
+font-family:wotfard;
 animation: ${show} .22s .8s 1 ease-out forwards;
 `
 const TitleContainer = styled.div`
@@ -84,7 +67,7 @@ justify-self: baseline;
 `
 const List = styled.ul`
 list-style: none;
-font-size: 2rem;
+font-size:clamp(18px,2vw,20px);
 font-weight: 500;
 transition: all .25s 0s ease-in;
 display: flex;
@@ -96,32 +79,54 @@ justify-content:center;
 }
 @media only screen and (max-width:700px)
 {
+    font-size:20px;
     position: absolute;
+    top:8rem;
+    left: 0;
     z-index:2;
     padding:0;
-    margin: 0;
-    top:-1000px;
+    margin:0;
     width:100%;
-    height: calc(100vh - 8rem);
-    background-color: white;
-    justify-content: flex-start;
+    justify-content:  flex-start;
     flex-direction: column;
+    opacity: 0;
+    transition: opacity 500ms ease 0s ;
     ${( props ) => props.animated && css`
-    top:9rem;
-    `}
+     position: absolute;
+     opacity: 1;
+     height: 1100px;
+     background: hsla(0deg, 0%, 100%, 0.85);
+`}
 } 
 `
 const ListElement = styled.li`
 margin: 0 15px; 
 padding: 5px 0;
-
 @media only screen and (max-width:700px)
 {
-    margin:0;
-    padding: 20px 0px 20px 20px ;
-    display:block;
-    border-bottom: 1px solid var(--color-stroke);
+    transform:translate(-100px,50px);
+    padding: 10px 25px;
+    margin: 5px 10px;
+${( props ) => props.animated && props.about && css`
+transform:translate(0,50px);
+`}
+${( props ) =>  props.about && css`
+transition: transform .45s 0s ease-out;
+`}
+${( props ) => props.animated && props.work && css`
+transform:translate(0,50px);
+`}
+${( props ) =>  props.work && css`
+transition: transform .45s .2s ease-out; 
+`}
+${( props ) => props.animated && props.blogs && css`
+transform:translate(0,50px);
+`}
+${( props ) =>  props.blogs && css`
+transition: transform .45s .5s ease-out; 
+`}
 }
+
 `
 const Menu = styled.div`
 display: flex;
@@ -140,7 +145,7 @@ cursor: pointer;
 } 
 `
 const MenuLine = styled.div`
-border-bottom: 2px solid black;
+border-bottom: 2.6px solid black;
 width:25px;
 height: 6px;
 transition: transform .3s 0s ease-out,opacity .3s 0s ease-out;
@@ -170,7 +175,7 @@ const Header = () => {
             <NavContainer>
                 <TitleContainer>
                     <NavLink title to='/'>
-                        <Title>ShardulPathak</Title>
+                        <Title>SHARDUL PATHAK</Title>
                     </NavLink>
                 </TitleContainer>
                 <Menu onClick={handleClick}>
@@ -179,14 +184,14 @@ const Header = () => {
                     <MenuLine animated={animate} three></MenuLine>
                 </Menu>
             </NavContainer>
-            <List animated={animate}>
-                <ListElement>
+            <List animated={animate} >
+                <ListElement animated={animate} about>
                     <NavLink to='/about'>About</NavLink>
                 </ListElement>
-                <ListElement>
+                <ListElement animated={animate} work>
                     <NavLink to='/work'>Work</NavLink>
                 </ListElement>
-                <ListElement>
+                <ListElement animated={animate} blogs> 
                     <NavLink to='/blogs'>Blogs</NavLink>
                 </ListElement>
             </List>
