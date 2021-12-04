@@ -1,4 +1,4 @@
-import {  useEffect, useRef, useState } from "react";
+import {  useEffect, useState } from "react";
 import styled, { css, keyframes } from "styled-components";
 
 
@@ -94,7 +94,7 @@ const About = () => {
     };
     const typedText = async () => {
       if ( characters.length > index ) {
-        if(index==(characters.length-1))
+        if(index===(characters.length-1))
         {
           setCursorBlink(true);
         }
