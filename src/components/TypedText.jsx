@@ -36,7 +36,7 @@ padding:5px 0;
 ${( { animate, cursorBlink } ) => animate && css`
 &::after{
     content: "";
-    width: 2.2px;
+    width: 2px;
     height: 3rem;
     background: black;
     margin-bottom: -3px;
@@ -46,8 +46,7 @@ ${( { animate, cursorBlink } ) => animate && css`
     animation: ${blink} .6s 0s steps(1) infinite;
     `}
 }
-`
-    }
+`}
 `;
 
 const textLines = [
