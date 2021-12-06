@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Blogs from "./pages/Blogs";
+import './styles/style.css';
 import Work from "./pages/Work";
 import { Route, Routes } from "react-router";
 import Layout from "./components/Layout";
