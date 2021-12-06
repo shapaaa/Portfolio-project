@@ -49,19 +49,18 @@ ${( { animate, cursorBlink } ) => animate && css`
 `}
 `;
 
-const textLines = [
-    "Hi,I'm Shardul",
-    "I'm a frontend developer from India",
-    "I spend most of my time building on web",
-    "Experienced in building web apps using React, Node, Graphql and Postgres",
-    "Also I blog about some interesting technical concepts",
-    "Other than the technical side",
-    "I love playing and watching cricket 🏏",
-    "I'm avid listener of podcasts 🎧",
-    "Hmm...🤔 that's pretty much about me"
-]
-
 const TypedText = () => {
+    const textLines = [
+       ` Hi,I'm Shardul 😁`,
+        "I'm a frontend developer from India",
+        "I spend most of my time building on web",
+        "Experienced in building web apps using React, Node, Graphql and Postgres",
+        "Also I blog about some interesting technical concepts",
+        "Other than the technical side",
+        "I love playing and watching cricket 🏏",
+        "I'm avid listener of podcasts 🎧",
+        "Hmm...🤔 that's pretty much about me"
+    ]
     const [index, setIndex] = useState( 0 );
     const [string, setString] = useState( '> ' );
     const [characters, setCharacters] = useState( textLines[0].split( "" ) )
@@ -74,7 +73,7 @@ const TypedText = () => {
                 setTimeout( () => {
                     setString( string + characters[index] )
                     setIndex( index + 1 )
-                }, 60 )
+                }, 40 )
             }
             else if ( textIndex < textLines.length - 1 ) {
                 setCursorBlink( true )
