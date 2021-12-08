@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useRef } from "react";
 import styled, { css, keyframes } from "styled-components";
 
 const Container = styled.div`
@@ -61,39 +61,66 @@ const TypedText = () => {
         "I'm avid listener of podcasts 🎧",
         "Hmm...🤔 that's pretty much about me"
     ]
-    const [index, setIndex] = useState( 0 );
-    const [string, setString] = useState( '> ' );
-    const [characters, setCharacters] = useState( textLines[0].split( "" ) )
-    const [textIndex, setTextIndex] = useState( 0 );
-    const [cursorBlink, setCursorBlink] = useState( false );
+    const initialState = {
+        string:'> ',
+        index:0,
+        characters:textLines[0].split( "" ),
+        textIndex:0,
+        cursorBlink:false
+    }
+
+    const reducer = (state,action)=>{
+        const {string,index,characters,textIndex,cursorBlink} = state
+        if(action.type==='append')
+        {
+            return {...state,...{ string: string+characters[index] }}
+        }
+        if(action.type==='increment')
+        {
+            return {...state,...{ index: index+1 }}
+        }
+        if(action.type==='blink')
+        {
+            return {...state,...{ cursorBlink: !cursorBlink }}
+        }
+        if(action.type==='newline')
+        {
+            return {...initialState,...{textIndex:textIndex+1,characters:textLines[textIndex+1].split( "" )}}
+        }
+        if(action.type ==='hide')
+        {
+            return {...state,...{ textIndex:textIndex+1 }}
+        }
+    }
+    
+    const [state,dispatch] = useReducer(reducer,initialState)
+    const {string,textIndex,characters,index,cursorBlink} = state;
+    const indexRef = useRef(0)
 
     useEffect( () => {
         const typedText = () => {
             if ( characters.length > index ) {
                 setTimeout( () => {
-                    setString( string + characters[index] )
-                    setIndex( index + 1 )
+                    dispatch({type:'append'})
+                    dispatch({type:'increment'})
                 }, 40 )
             }
-            else if ( textIndex < textLines.length - 1 ) {
-                setCursorBlink( true )
+            else if ( indexRef.current < textLines.length - 1 ) {
+                dispatch( {type:'blink'} )
                 setTimeout( () => {
-                    setTextIndex( textIndex + 1 )
-                    setString( '> ' )
-                    setCharacters( textLines[textIndex + 1].split( "" ) )
-                    setCursorBlink( false )
-                    setIndex( 0 )
+                    indexRef.current++;
+                    dispatch({type:'newline'})
                 }, 1300 )
             }
             else {
-                setCursorBlink( true )
+                dispatch( {type:'blink'} )
                 setTimeout( () => {
-                    setTextIndex( textLines.length );
+                    dispatch( {type:'hide'} )
                 }, 1300 )
             }
         }
         typedText()
-    }, [index] )
+    }, [index,characters.length,textLines.length] )
     return (
         <Container>
             <TextWrapper>
