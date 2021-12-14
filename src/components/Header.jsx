@@ -47,11 +47,14 @@ const Header = () => {
     const handleClick = () => {
         setAnimate( !animate )
     }
+    const animateFalse = () => {
+        setAnimate( false )
+    }
     return (
         <>
             <Container>
                 <NavContainer>
-                    <TitleContainer>
+                    <TitleContainer onClick={animateFalse}>
                         <NavLink title to='/'>
                             <Title>SHARDUL PATHAK</Title>
                         </NavLink>
@@ -60,7 +63,7 @@ const Header = () => {
                 </NavContainer>
                 <ListComponent largescreen={true} animate={animate} />
             </Container>
-            <ListComponent smallscreen={true} animate={animate} />
+            <ListComponent setAnimate={setAnimate} smallscreen={true} animate={animate} />
         </>
     )
 }
