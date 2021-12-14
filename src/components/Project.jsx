@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import { useEffect } from "react/cjs/react.development";
 import styled from "styled-components";
 import LinkIcon from "../assets/icons/LinkIcon";
 
@@ -24,14 +26,17 @@ padding:30px;
 {
     padding:20px;
 }
+transform: translateY(10%);
+opacity: 0;
+transition: transform .8s 0ms ease-out,opacity 1s 0ms ease-out;
 `;
 const Title = styled.div`
 font-size:clamp(22px,2vw,24px);
 font-weight:500;
 background: -webkit-linear-gradient(135deg,#E60067 40%, #4433FF);
 background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
 `;
 const Content = styled.p`
 margin:0;
@@ -63,12 +68,21 @@ transition: background-color .5s 0s ease;
 &:hover > div {
     color:white;
 }
+@media only screen and (max-width:600px){
+    color:white;
+    background-color: var(--red);
+    padding:14px;
+    & > div > svg{
+      fill:white;
+    }
+}
 `
 const ButtonContainer = styled.div`
     display:flex;
     justify-content:flex-start;
-    gap:clamp(15px,1vw,30px);
-`
+    margin-top: 10px;
+    gap:clamp(20px,2vw,30px);
+    `
 export const LinkContent = styled.div`
 display:flex;
 align-items:center;
@@ -79,24 +93,46 @@ width: 100%;
 object-fit: cover;
 height:clamp(300px,40vw,360px);
 box-shadow: #f0eeee 0px 0rem 5px;
+@media only screen and (max-width:500px)
+{
+    object-fit: contain;
+    height:55vw;
+}
 `
 const Project = ( { project } ) => {
-    const { name, about, siteLink, githubLink,video } = project;
+
+    const { name, about, siteLink, githubLink, video } = project;
+    const ref = useRef( null );
+    const callback = ( entries, observer ) => {
+        if ( entries[0].intersectionRatio >= 0.1) {
+            entries[0].target.style.transform = "translateY(0)";
+            entries[0].target.style.opacity = 1;
+        }
+    };
+    useEffect( () => {
+        const options = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.1
+        };
+        const observer = new IntersectionObserver( callback, options );
+        observer.observe( ref.current );
+    }, [] );
     return (
-        <Container>
+        <Container ref={ref}>
             <Title>{name}</Title>
             <Content>{about}</Content>
-            <Video loop muted autoPlay="true"  src={video}></Video>
-                <ButtonContainer>
-                    {
-                        siteLink &&
+            {video && <Video loop muted autoPlay="true" src={video}></Video>}
+            <ButtonContainer>
+                {
+                    siteLink &&
                     <Link target="_blank" href={siteLink}><LinkContent>Live Site&nbsp; <LinkIcon /></LinkContent></Link>
-                    }
-                    {
-                        githubLink && 
+                }
+                {
+                    githubLink &&
                     <Link target="_blank" href={githubLink}><LinkContent>Code &nbsp; <LinkIcon /></LinkContent></Link>
-                    }
-                </ButtonContainer>
+                }
+            </ButtonContainer>
         </Container>
     )
 }
