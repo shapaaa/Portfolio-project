@@ -1,3 +1,4 @@
+import { useRef,useEffect } from "react";
 import styled from "styled-components";
 import LinkIcon from "../assets/icons/LinkIcon";
 
@@ -24,6 +25,9 @@ padding:30px;
 {
     padding:20px;
 }
+transform: translateY(10%);
+opacity: 0;
+transition: transform .8s 0ms ease-out,opacity 1s 0ms ease-out;
 `;
 const Title = styled.div`
 font-size:clamp(22px,2vw,24px);
@@ -97,8 +101,24 @@ box-shadow: #f0eeee 0px 0rem 5px;
 const Project = ( { project } ) => {
 
     const { name, about, siteLink, githubLink, video } = project;
+    const ref = useRef( null );
+    const callback = ( entries, observer ) => {
+        if ( entries[0].intersectionRatio >= 0.1) {
+            entries[0].target.style.transform = "translateY(0)";
+            entries[0].target.style.opacity = 1;
+        }
+    };
+    useEffect( () => {
+        const options = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.1
+        };
+        const observer = new IntersectionObserver( callback, options );
+        observer.observe( ref.current );
+    }, [] );
     return (
-        <Container>
+        <Container ref={ref}>
             <Title>{name}</Title>
             <Content>{about}</Content>
             {video && <Video loop muted autoPlay="true" src={video}></Video>}
