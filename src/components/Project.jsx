@@ -110,13 +110,16 @@ const Project = ( { project } ) => {
         }
     };
     useEffect( () => {
-        const options = {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0.1
-        };
-        const observer = new IntersectionObserver( callback, options );
-        observer.observe( ref.current );
+        const createObserver = ()=>{
+            const options = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.1
+            };
+            const observer = new IntersectionObserver( callback, options );
+            observer.observe( ref.current );
+        }
+        createObserver();
     }, [] );
     return (
         <Container ref={ref}>
