@@ -1,5 +1,4 @@
-import { useRef } from "react";
-import { useEffect } from "react/cjs/react.development";
+import { useRef,useEffect } from "react";
 import styled from "styled-components";
 import LinkIcon from "../assets/icons/LinkIcon";
 
@@ -104,22 +103,19 @@ const Project = ( { project } ) => {
     const { name, about, siteLink, githubLink, video } = project;
     const ref = useRef( null );
     const callback = ( entries, observer ) => {
-        if ( entries[0].intersectionRatio >= 0.1) {
+        if ( entries[0].intersectionRatio >= 0.1 ) {
             entries[0].target.style.transform = "translateY(0)";
             entries[0].target.style.opacity = 1;
         }
     };
     useEffect( () => {
-        const createObserver = ()=>{
-            const options = {
-                root: null,
-                rootMargin: "0px",
-                threshold: 0.1
-            };
-            const observer = new IntersectionObserver( callback, options );
-            observer.observe( ref.current );
-        }
-        createObserver();
+        const options = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.1
+        };
+        const observer = new IntersectionObserver( callback, options );
+        observer.observe( ref.current );
     }, [] );
     return (
         <Container ref={ref}>
