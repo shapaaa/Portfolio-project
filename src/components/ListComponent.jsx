@@ -16,7 +16,7 @@ justify-content:center;
 @media only screen and (min-width:701px)
 {
     opacity: 0;
-    animation: ${show} .22s .82s 1 ease-out forwards;
+    animation: ${show} .22s .8s 1 ease-out forwards;
     ${({smallscreen})=> smallscreen && css`
        display: none;
     `}
@@ -29,7 +29,7 @@ justify-content:center;
     font-size:20px;
     position: absolute;
     top:8rem;
-    left: -100%;
+    transform: translateX(-100%);
     z-index:2;
     padding:0;
     margin:0;
@@ -42,9 +42,9 @@ justify-content:center;
     position: absolute;
     opacity: 1;
     height: 100%;
-    left:0;
+    transform: translateX(0);
     max-height: 1100px;
-    background: hsla(0deg, 0%, 100%, 0.85);
+    background:hsla(0deg, 0%, 100%, 0.97);;
     `}
 } 
 `
@@ -80,33 +80,37 @@ margin: 0 15px;
 padding: 5px 0;
 @media only screen and (max-width:700px)
 {
-    transform:translate(-100px,50px);
+    transform:translate(-100%,50px);
     padding: 10px 25px;
     margin: 5px 10px;
 ${( props ) => props.animated && props.about && css`
 transform:translate(0,50px);
 `}
 ${( props ) => props.about && css`
-transition: transform .52s .05s ease;
+transition: transform .45s 20ms ease;
 `}
 ${( props ) => props.animated && props.work && css`
 transform:translate(0,50px);
 `}
 ${( props ) => props.work && css`
-transition: transform .52s .2s ease; 
+transition: transform .55s 140ms ease; 
 `}
 ${( props ) => props.animated && props.blogs && css`
 transform:translate(0,50px);
 `}
 ${( props ) => props.blogs && css`
-transition: transform .52s .3s ease; 
+transition: transform .55s 280ms ease; 
 `}
 }
 `
-const ListComponent = ({animate,smallscreen,largescreen}) => {
+const ListComponent = ({setAnimate,animate,smallscreen,largescreen}) => {
+    const handleClick = () => {
+        if(animate)
+        setAnimate( false )
+    }
     return (
-        <List smallscreen={smallscreen} largescreen={largescreen} animated={animate} >
-            <ListElement animated={animate} about>
+        <List onClick={handleClick} smallscreen={smallscreen} largescreen={largescreen} animated={animate} >
+            <ListElement  animated={animate} about>
                 <NavLink to='/about'>About</NavLink>
             </ListElement>
             <ListElement animated={animate} work>
