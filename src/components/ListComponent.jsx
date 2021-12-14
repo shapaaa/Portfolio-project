@@ -1,5 +1,5 @@
+import { Link } from "react-router-dom";
 import styled, { css, keyframes } from "styled-components";
-import { NavLink } from "./Header";
 
 export const show = keyframes`
 100%{
@@ -29,7 +29,7 @@ justify-content:center;
     font-size:20px;
     position: absolute;
     top:8rem;
-    left: 0;
+    left: -100%;
     z-index:2;
     padding:0;
     margin:0;
@@ -37,16 +37,44 @@ justify-content:center;
     justify-content:  flex-start;
     flex-direction: column;
     opacity: 0;
-    transition: opacity 500ms ease 0s;
+    transition: opacity .8s ease 0s;
     ${( props ) => props.animated && css`
-     position: absolute;
-     opacity: 1;
-     height: 100%;
-     max-height: 1100px;
-     background: hsla(0deg, 0%, 100%, 0.85);
-`}
+    position: absolute;
+    opacity: 1;
+    height: 100%;
+    left:0;
+    max-height: 1100px;
+    background: hsla(0deg, 0%, 100%, 0.85);
+    `}
 } 
 `
+export const NavLink = styled( Link )`
+text-decoration: none;
+font-weight: 500px;
+color:black;
+width:fit-content;
+display: block;
+position: relative;
+&::after{
+    content: "";
+    position: absolute;
+    bottom:-10px;
+    left:0;
+    width:0;
+    background-color:black;
+    ${( { title } ) => title && css`
+    background-color:#4433FF;
+    ` };
+    height:2px;
+    transition: width .2s ease-out,font-weight .2s ease-out;
+}
+&:hover::after{
+    width:100%;
+}
+`
+const Resume = styled(NavLink).attrs({
+    as:"a"
+})``;
 const ListElement = styled.li`
 margin: 0 15px; 
 padding: 5px 0;
@@ -59,22 +87,21 @@ ${( props ) => props.animated && props.about && css`
 transform:translate(0,50px);
 `}
 ${( props ) => props.about && css`
-transition: transform .45s 0s ease-out;
+transition: transform .52s .05s ease;
 `}
 ${( props ) => props.animated && props.work && css`
 transform:translate(0,50px);
 `}
 ${( props ) => props.work && css`
-transition: transform .45s .2s ease-out; 
+transition: transform .52s .2s ease; 
 `}
 ${( props ) => props.animated && props.blogs && css`
 transform:translate(0,50px);
 `}
 ${( props ) => props.blogs && css`
-transition: transform .45s .5s ease-out; 
+transition: transform .52s .3s ease; 
 `}
 }
-
 `
 const ListComponent = ({animate,smallscreen,largescreen}) => {
     return (
@@ -86,7 +113,7 @@ const ListComponent = ({animate,smallscreen,largescreen}) => {
                 <NavLink to='/work'>Work</NavLink>
             </ListElement>
             <ListElement animated={animate} blogs>
-                <NavLink to='/blogs'>Blogs</NavLink>
+                <Resume target="_blank"  href='https://tinyurl.com/shardul-resume'>Resume</Resume>
             </ListElement>
         </List>
     )

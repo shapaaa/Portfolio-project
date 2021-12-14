@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import styled, { css, keyframes } from "styled-components";
-import ListComponent from "./List";
+import styled, { keyframes } from "styled-components";
+import ListComponent, { NavLink } from "./ListComponent";
 import Menu from "./Menu";
 
 const Container = styled.div`
@@ -25,30 +24,6 @@ z-index:1000;
     display: flex;
     align-items: center;
     justify-content: space-around;
-}
-`
-export const NavLink = styled( Link )`
-text-decoration: none;
-font-weight: 500px;
-color:black;
-width:fit-content;
-display: block;
-position: relative;
-&::after{
-    content: "";
-    position: absolute;
-    bottom:-10px;
-    left:0;
-    width:0;
-    background-color:black;
-    ${( { title } ) => title && css`
-    background-color:#4433FF;
-    ` };
-    height:2px;
-    transition: width .2s ease-out,font-weight .2s ease-out;
-}
-&:hover::after{
-    width:100%;
 }
 `
 export const show = keyframes`
