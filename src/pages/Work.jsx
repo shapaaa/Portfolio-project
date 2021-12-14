@@ -132,7 +132,7 @@ const Work = () => {
   return (
     <Container>
         <Title small>Projects</Title>
-        <Title >Some recent side projects I have built</Title>
+        <Title >Take a look at what I've been working on</Title>
         <Projects>
           {
             projects.map((project)=>
