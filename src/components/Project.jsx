@@ -1,5 +1,3 @@
-import { useRef } from "react";
-import { useEffect } from "react/cjs/react.development";
 import styled from "styled-components";
 import LinkIcon from "../assets/icons/LinkIcon";
 
