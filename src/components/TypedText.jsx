@@ -27,7 +27,7 @@ const blink = keyframes`
 const Text = styled.div`
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap');
 font-family: 'Inconsolata', monospace;
-font-size: 22px;
+font-size: clamp(20px,1.8vw,22px);
 line-height: 4rem;
 padding:5px 0;
 @media only screen  and (min-width:451px){
@@ -51,7 +51,7 @@ ${( { animate, cursorBlink } ) => animate && css`
 
 const TypedText = () => {
     const textLines = [
-       ` Hi,I'm Shardul 😁`,
+       "Hi,I'm Shardul",
         "I'm a frontend developer from India",
         "I spend most of my time building on web",
         "Experienced in building web apps using React, Node, Graphql and Postgres",
@@ -96,30 +96,37 @@ const TypedText = () => {
     const [state,dispatch] = useReducer(reducer,initialState)
     const {string,textIndex,characters,index,cursorBlink} = state;
     const indexRef = useRef(0)
-
+    const timerRef = useRef(null);
     useEffect( () => {
         const typedText = () => {
             if ( characters.length > index ) {
-                setTimeout( () => {
+                if(index===0)
+                {
+                    clearTimeout(timerRef.current)
+                }
+              timerRef.current =  setTimeout( () => {
                     dispatch({type:'append'})
                     dispatch({type:'increment'})
-                }, 40 )
+                }, 45 )
             }
             else if ( indexRef.current < textLines.length - 1 ) {
                 dispatch( {type:'blink'} )
-                setTimeout( () => {
+                clearTimeout(timerRef.current)
+               timerRef.current =  setTimeout( () => {
                     indexRef.current++;
                     dispatch({type:'newline'})
                 }, 1300 )
             }
             else {
                 dispatch( {type:'blink'} )
-                setTimeout( () => {
+                clearTimeout(timerRef.current)
+                timerRef.current =  setTimeout( () => {
                     dispatch( {type:'hide'} )
                 }, 1300 )
             }
         }
         typedText()
+     return ()=> clearTimeout(timerRef.current)
     }, [index,characters.length,textLines.length] )
     return (
         <Container>
