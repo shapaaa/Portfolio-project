@@ -26,7 +26,7 @@ width: 350px;
 height:350px;
 transform: translateY(200px);
 opacity: 0;
-animation: ${fadeinup} 1.1s .02s 1 ease-in-out forwards;
+animation: ${fadeinup} 1s .02s 1 ease-out forwards;
 `
 const Info = styled.p`
 font-size: 20px;
@@ -39,13 +39,13 @@ line-height:1.5em;
 }
 transform: translateY(150px);
 opacity: 0;
-animation: ${fadeinup} 1s .12s 1 ease-in-out forwards;
+animation: ${fadeinup} 1s .08s 1 ease-out forwards;
 `
 const SocialInfo = styled.div`
 display: flex;
 opacity: 0;
 transform: translateY(150px);
-animation: ${fadeinup} 1s .14s 1 ease-in-out forwards;
+animation: ${fadeinup} 1s .16s 1 ease-out forwards;
 `
 const Wrapper = styled.div`
 display: flex;
@@ -64,7 +64,7 @@ const Home = () => {
     return (
         <Container>
             <Image src={Emoji} />
-            <Info>Software Engineer @rtCamp</Info>
+            <Info>Software Engineering Intern @rtCamp</Info>
             <Wrapper>
                 <Info>Programmer • Developer • Learner </Info>
                 <Info>&nbsp;• Amateur Blogger</Info>

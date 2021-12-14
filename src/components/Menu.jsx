@@ -14,7 +14,7 @@ cursor: pointer;
 @media only screen and (max-width:700px)
 {
     opacity: 0;
-    animation: ${show} .22s .82s 1 ease-out forwards;
+    animation: ${show} .22s .8s 1 ease-out forwards;
 } 
 @media only screen and (min-width:701px)
 {
@@ -25,7 +25,7 @@ const MenuLine = styled.div`
 border-bottom: 2.6px solid black;
 width:25px;
 height: 6px;
-transition: transform .3s 0s ease-out,opacity .3s 0s ease-out;
+transition: transform .3s 50ms ease-out,opacity .3s 50ms ease-out;
 ${( props ) =>
         props.animated && props.one && css`
        transform:scale3d(1,1,1) translate3d(-.8px,5.7px,0px) rotateZ(-45deg);
