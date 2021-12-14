@@ -81,13 +81,12 @@ height:clamp(300px,40vw,360px);
 box-shadow: #f0eeee 0px 0rem 5px;
 `
 const Project = ( { project } ) => {
-    const { name, about, techStack, siteLink, githubLink,video } = project;
+    const { name, about, siteLink, githubLink,video } = project;
     return (
         <Container>
             <Title>{name}</Title>
             <Content>{about}</Content>
             <Video loop muted autoPlay="true"  src={video}></Video>
-            {/* <Content>TechStack:{techStack}</Content> */}
                 <ButtonContainer>
                     {
                         siteLink &&
