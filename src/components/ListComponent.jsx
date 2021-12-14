@@ -103,13 +103,9 @@ transition: transform .55s 280ms ease;
 `}
 }
 `
-const ListComponent = ({setAnimate,animate,smallscreen,largescreen}) => {
-    const handleClick = () => {
-        if(animate)
-        setAnimate( false )
-    }
+const ListComponent = ({animateFalse,animate,smallscreen,largescreen}) => {
     return (
-        <List onClick={handleClick} smallscreen={smallscreen} largescreen={largescreen} animated={animate} >
+        <List onClick={animateFalse} smallscreen={smallscreen} largescreen={largescreen} animated={animate} >
             <ListElement  animated={animate} about>
                 <NavLink to='/about'>About</NavLink>
             </ListElement>

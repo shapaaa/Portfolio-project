@@ -63,7 +63,7 @@ const Header = () => {
                 </NavContainer>
                 <ListComponent largescreen={true} animate={animate} />
             </Container>
-            <ListComponent setAnimate={setAnimate} smallscreen={true} animate={animate} />
+            <ListComponent animateFalse={animateFalse} smallscreen={true} animate={animate} />
         </>
     )
 }
