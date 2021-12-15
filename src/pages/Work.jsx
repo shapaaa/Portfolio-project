@@ -5,6 +5,7 @@ import portfolio from '../assets/videos/portfolio.webm'
 import wordcamp from '../assets/videos/wordcamp.webm'
 import weather from '../assets/videos/weather.webm'
 import adhelp from '../assets/videos/adhelp.webm'
+import { Title } from "./About";
 
 const Container = styled.div`
 display: flex;
@@ -18,21 +19,8 @@ gap:40px;
   width: 80%;
   margin: 0 auto;
   `
-const fadeinup = keyframes`
-  100%{
-    transform: translateY(0);
-    opacity: 1;
-  }
-  `
-const Title = styled.div`
-font-size:clamp(24px,3vw,28px);
-font-family: 'Open Sans';
-padding:10px;
-margin-top: 20px;
-text-align: center;
-transform: translateY(10%);
-opacity: 0;
-animation: ${fadeinup} .8s 0ms ease-out forwards;
+
+const WorkTitle = styled( Title )`
 ${( { small } ) => !small && css`
     display: none;
 `}
