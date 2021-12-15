@@ -54,9 +54,9 @@ const TypedText = () => {
         "I spend most of my time building things on web",
         "Experienced in building web apps using React, Node, Graphql and Postgres",
         "Also I blog about some interesting technical concepts",
-        "Other than the technical side",
+        "If I’m not doing anything coding-related",
         "I love playing and watching cricket 🏏",
-        "I'm avid listener of podcasts 🎧",
+        "I enjoy listening music & podcasts 🎧",
         "Hmm...🤔 that's pretty much about me"
     ]
     const initialState = {
