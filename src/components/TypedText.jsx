@@ -8,10 +8,7 @@ display: flex;
 align-items: flex-start;
 justify-content: flex-start;
 width: 100%;
-height: 900px;
-@media only screen  and (max-width:400px){
-height:950px;
-}
+min-height: 100vh;
 box-shadow: 0 0 5px 1px #a2a2a5;
 `;
 
@@ -52,8 +49,9 @@ ${( { animate, cursorBlink } ) => animate && css`
 const TypedText = () => {
     const textLines = [
         "Hi,I'm Shardul",
-        "I'm a frontend developer from India",
-        "I spend most of my time building on web",
+        "I'm a Software Professional from India",
+        "I have done my bachelors from PICT pune",
+        "I spend most of my time building things on web",
         "Experienced in building web apps using React, Node, Graphql and Postgres",
         "Also I blog about some interesting technical concepts",
         "Other than the technical side",

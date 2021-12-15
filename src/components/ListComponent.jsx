@@ -43,7 +43,6 @@ justify-content:center;
     opacity: 1;
     height: 100%;
     transform: translateX(0);
-    max-height: 1100px;
     background:hsla(0deg, 0%, 100%, 0.97);;
     `}
 } 
