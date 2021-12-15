@@ -17,13 +17,13 @@ justify-content:center;
 {
     opacity: 0;
     animation: ${show} .22s .8s 1 ease-out forwards;
-    ${({smallscreen})=> smallscreen && css`
+    ${( { smallscreen } ) => smallscreen && css`
        display: none;
     `}
 }
 @media only screen and (max-width:700px)
 {
-    ${({largescreen})=> largescreen && css`
+    ${( { largescreen } ) => largescreen && css`
     display: none;
     `}
     font-size:20px;
@@ -72,9 +72,9 @@ position: relative;
     width:100%;
 }
 `
-const Resume = styled(NavLink).attrs({
-    as:"a"
-})``;
+const Resume = styled( NavLink ).attrs( {
+    as: "a"
+} )``;
 const ListElement = styled.li`
 margin: 0 15px; 
 padding: 5px 0;
@@ -103,17 +103,17 @@ transition: transform .55s 280ms ease;
 `}
 }
 `
-const ListComponent = ({animateFalse,animate,smallscreen,largescreen}) => {
+const ListComponent = ( { animateFalse, animate, smallscreen, largescreen } ) => {
     return (
         <List onClick={animateFalse} smallscreen={smallscreen} largescreen={largescreen} animated={animate} >
-            <ListElement  animated={animate} about>
+            <ListElement animated={animate} about>
                 <NavLink to='/about'>About</NavLink>
             </ListElement>
             <ListElement animated={animate} work>
                 <NavLink to='/work'>Work</NavLink>
             </ListElement>
             <ListElement animated={animate} blogs>
-                <Resume target="_blank"  href='https://tinyurl.com/shardul-resume'>Resume</Resume>
+                <Resume target="_blank" href='https://tinyurl.com/shardul-resume'>Resume</Resume>
             </ListElement>
         </List>
     )

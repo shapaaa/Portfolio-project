@@ -42,7 +42,7 @@ ${( props ) =>
     `
     } 
 `
-const Menu = ({handleClick,animate}) => {
+const Menu = ( { handleClick, animate } ) => {
     return (
         <Container onClick={handleClick}>
             <MenuLine animated={animate} one ></MenuLine>

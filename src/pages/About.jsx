@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import TypedText from "../components/TypedText";
 
 
@@ -13,11 +13,19 @@ height: max-content;
 }
 width: 80vw;
 `
-
-const Title = styled.div`
-font-family: 'Open Sans';
+const fadeinup = keyframes`
+100%{
+  transform: translateY(0);
+  opacity: 1;
+}
+`
+export const Title = styled.div`
 font-size:clamp(24px,3vw,28px);
 text-align:center;
+line-height: 1.5;
+transform: translateY(10%);
+opacity: 0;
+animation: ${fadeinup} .8s 0ms ease-out forwards;
 `
 
 const About = () => {

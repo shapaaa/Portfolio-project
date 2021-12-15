@@ -51,7 +51,7 @@ ${( { animate, cursorBlink } ) => animate && css`
 
 const TypedText = () => {
     const textLines = [
-       "Hi,I'm Shardul",
+        "Hi,I'm Shardul",
         "I'm a frontend developer from India",
         "I spend most of my time building on web",
         "Experienced in building web apps using React, Node, Graphql and Postgres",
@@ -62,72 +62,66 @@ const TypedText = () => {
         "Hmm...🤔 that's pretty much about me"
     ]
     const initialState = {
-        string:'> ',
-        index:0,
-        characters:textLines[0].split( "" ),
-        textIndex:0,
-        cursorBlink:false
+        string: '> ',
+        index: 0,
+        characters: textLines[0].split( "" ),
+        textIndex: 0,
+        cursorBlink: false
     }
 
-    const reducer = (state,action)=>{
-        const {string,index,characters,textIndex,cursorBlink} = state
-        if(action.type==='append')
-        {
-            return {...state,...{ string: string+characters[index] }}
+    const reducer = ( state, action ) => {
+        const { string, index, characters, textIndex, cursorBlink } = state
+        if ( action.type === 'append' ) {
+            return { ...state, ...{ string: string + characters[index] } }
         }
-        if(action.type==='increment')
-        {
-            return {...state,...{ index: index+1 }}
+        if ( action.type === 'increment' ) {
+            return { ...state, ...{ index: index + 1 } }
         }
-        if(action.type==='blink')
-        {
-            return {...state,...{ cursorBlink: !cursorBlink }}
+        if ( action.type === 'blink' ) {
+            return { ...state, ...{ cursorBlink: !cursorBlink } }
         }
-        if(action.type==='newline')
-        {
-            return {...initialState,...{textIndex:textIndex+1,characters:textLines[textIndex+1].split( "" )}}
+        if ( action.type === 'newline' ) {
+            return { ...initialState, ...{ textIndex: textIndex + 1, characters: textLines[textIndex + 1].split( "" ) } }
         }
-        if(action.type ==='hide')
-        {
-            return {...state,...{ textIndex:textIndex+1 }}
+        if ( action.type === 'hide' ) {
+            return { ...state, ...{ textIndex: textIndex + 1 } }
         }
     }
-    
-    const [state,dispatch] = useReducer(reducer,initialState)
-    const {string,textIndex,characters,index,cursorBlink} = state;
-    const indexRef = useRef(0)
-    const timerRef = useRef(null);
+
+    const [state, dispatch] = useReducer( reducer, initialState )
+    const { string, textIndex, characters, index, cursorBlink } = state;
+    const indexRef = useRef( 0 )
+    const timerRef = useRef( null );
     useEffect( () => {
         const typedText = () => {
             if ( characters.length > index ) {
-                if(index===0)
-                {
-                    clearTimeout(timerRef.current)
+                if ( index === 0 ) {
+                    clearTimeout( timerRef.current )
                 }
-              timerRef.current =  setTimeout( () => {
-                    dispatch({type:'append'})
-                    dispatch({type:'increment'})
-                }, 45 )
+                timerRef.current = setTimeout( () => {
+                    dispatch( { type: 'append' } )
+                    dispatch( { type: 'increment' } )
+                }, 46 )
             }
             else if ( indexRef.current < textLines.length - 1 ) {
-                dispatch( {type:'blink'} )
-                clearTimeout(timerRef.current)
-               timerRef.current =  setTimeout( () => {
+                dispatch( { type: 'blink' } )
+                clearTimeout( timerRef.current )
+                timerRef.current = setTimeout( () => {
                     indexRef.current++;
-                    dispatch({type:'newline'})
+                    dispatch( { type: 'newline' } )
                 }, 1300 )
             }
             else {
-                dispatch( {type:'blink'} )
-                clearTimeout(timerRef.current)
-                timerRef.current =  setTimeout( () => {
-                    dispatch( {type:'hide'} )
+                dispatch( { type: 'blink' } )
+                clearTimeout( timerRef.current )
+                timerRef.current = setTimeout( () => {
+                    dispatch( { type: 'hide' } )
                 }, 1300 )
             }
         }
         typedText()
-     return ()=> clearTimeout(timerRef.current)
-    }, [index,characters.length,textLines.length] )
+        return () => clearTimeout( timerRef.current )
+    }, [index, characters.length, textLines.length] )
     return (
         <Container>
             <TextWrapper>
