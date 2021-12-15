@@ -40,12 +40,14 @@ width:100%;
 `
 const projects = [
   {
+    id: 1,
     name: 'Portfolio Website',
     video: portfolio,
     about: 'A Website to present my skills and projects I have done',
     githubLink: 'https://github.com/shapaaa/Portfolio-project'
   },
   {
+    id: 2,
     name: 'Weather Application',
     video: weather,
     about: "A responsive web application to show weather data based on current location.Also user can get weather data about specific city by search",
@@ -53,11 +55,13 @@ const projects = [
     githubLink: 'https://github.com/shapaaa/Weather-app'
   },
   {
+    id: 3,
     name: 'User Authentication',
     about: 'Built user authentication using JSON web token, React, web storage API, Graphql, Node.Used Postgres database for the application storage.',
     githubLink: 'https://github.com/shapaaa/grocery-app-server'
   },
   {
+    id: 4,
     name: 'WordCamp Events Application',
     video: wordcamp,
     about: 'A web app to find wordcamp events happening all over the world using rest apis as data source',
@@ -65,11 +69,13 @@ const projects = [
     githubLink: 'https://github.com/shapaaa/WordCamp-Central-site'
   },
   {
+    id: 5,
     name: 'Yelp Clone',
     about: 'A website where people can find reviews about hotels.Also user can add new hotels and reviews about them.Built using React, Node, Postgres db.Used node-pg as a connector.',
     githubLink: 'https://github.com/shapaaa/yelp-client'
   },
   {
+    id: 6,
     name: 'Adhelp.io',
     video: adhelp,
     about: 'Responsive landing page with grid layout.Built using Html, Css , Chart.js library',
@@ -123,7 +129,7 @@ const Work = () => {
       <Projects>
         {
           projects.map( ( project ) =>
-            <Project project={project} />
+            <Project key={project.id} project={project} />
           )
         }
       </Projects>
