@@ -41,7 +41,7 @@ justify-content:center;
     ${( props ) => props.animated && css`
     position: absolute;
     opacity: 1;
-    height: 100%;
+    height: calc(100% - 8rem); 
     transform: translateX(0);
     background:hsla(0deg, 0%, 100%, 0.97);;
     `}
