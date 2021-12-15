@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { css } from "styled-components";
 import Github from "../assets/icons/github";
 import Project, { LinkContent } from "../components/Project";
 import portfolio from '../assets/videos/portfolio.webm'
