@@ -99,7 +99,7 @@ const TypedText = () => {
                 timerRef.current = setTimeout( () => {
                     dispatch( { type: 'append' } )
                     dispatch( { type: 'increment' } )
-                }, 46 )
+                }, 40 )
             }
             else if ( indexRef.current < textLines.length - 1 ) {
                 dispatch( { type: 'blink' } )
