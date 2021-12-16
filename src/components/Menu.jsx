@@ -22,7 +22,7 @@ cursor: pointer;
 } 
 `
 const MenuLine = styled.div`
-border-bottom: 2.6px solid black;
+border-bottom: 2.6px solid var(--color-text);
 width:25px;
 height: 6px;
 transition: transform .3s 50ms ease-out,opacity .3s 50ms ease-out;

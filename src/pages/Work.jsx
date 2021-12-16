@@ -103,9 +103,6 @@ transition: background-color .5s 0s ease;
 & > div > svg{
   margin:0;
 }
-& > a {
-  color:black;
-}
 &:hover > div > svg{
     fill:white;
 }

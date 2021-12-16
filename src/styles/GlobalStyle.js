@@ -8,13 +8,10 @@ const GlobalStyle = createGlobalStyle`
 }
 :root{
 font-size:62.5%;
---purp:#6C63FF;
---gray:#535661;
 --red:rgb(230, 0, 103);
 --yellow:rgb(255, 225, 0);
 --color-stroke: #d2d3d7;
 --color-text:hsl(222deg, 22%, 5%);
---about-height:900px;
 color:var(--color-text);
 }
 html,body {

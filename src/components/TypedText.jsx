@@ -35,7 +35,7 @@ ${( { animate, cursorBlink } ) => animate && css`
     content: "";
     width: 2px;
     height: 3rem;
-    background: black;
+    background: var(--color-text);
     margin-bottom: -3px;
     margin-left: 4px;
     display: inline-block;

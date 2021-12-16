@@ -49,8 +49,8 @@ justify-content:center;
 `
 export const NavLink = styled( Link )`
 text-decoration: none;
-font-weight: 500px;
-color:black;
+font-weight: 530;
+color: var(--color-text);
 width:fit-content;
 display: block;
 position: relative;
@@ -60,7 +60,7 @@ position: relative;
     bottom:-10px;
     left:0;
     width:0;
-    background-color:black;
+    background-color:var(--color-text);
     ${( { title } ) => title && css`
     background-color:#4433FF;
     ` };
