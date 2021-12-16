@@ -17,7 +17,7 @@ padding: clamp(10px,4vw,40px);
 `
 
 const blink = keyframes`
-40%{
+50%{
     opacity:0;
 }
 `
@@ -26,11 +26,8 @@ const Text = styled.div`
 font-family: 'Inconsolata', monospace;
 font-size: clamp(20px,1.8vw,22px);
 font-weight: 500;
-line-height: 4rem;
+line-height: 1.8em;
 padding:5px 0;
-@media only screen  and (min-width:451px){
-    line-height: 4rem;
-}
 ${( { animate, cursorBlink } ) => animate && css`
 &::after{
     content: "";
