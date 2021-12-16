@@ -49,7 +49,7 @@ ${( { animate, cursorBlink } ) => animate && css`
 
 const TypedText = () => {
     const textLines = [
-        "Hi,I'm Shardul",
+        "Hi,I'm Shardul as you know already 😅",
         "I'm a Software Professional from India",
         "I have done my bachelors from PICT pune",
         "I spend most of my time building things on web",
