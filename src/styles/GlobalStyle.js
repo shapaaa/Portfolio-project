@@ -20,6 +20,7 @@ color:var(--color-text);
 html,body {
   padding: 0;
   margin: 0;
+  -webkit-font-smoothing: antialiased;
   height: 100%;
   overflow-y: scroll;
 }
