@@ -17,7 +17,7 @@ padding: clamp(10px,4vw,40px);
 `
 
 const blink = keyframes`
-50%{
+40%{
     opacity:0;
 }
 `
@@ -25,6 +25,7 @@ const Text = styled.div`
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap');
 font-family: 'Inconsolata', monospace;
 font-size: clamp(20px,1.8vw,22px);
+font-weight: 500;
 line-height: 4rem;
 padding:5px 0;
 @media only screen  and (min-width:451px){
@@ -40,7 +41,7 @@ ${( { animate, cursorBlink } ) => animate && css`
     margin-left: 4px;
     display: inline-block;
     ${cursorBlink && css`
-    animation: ${blink} .6s 0s steps(1) infinite;
+    animation: ${blink} .4s 0s steps(1) infinite;
     `}
 }
 `}
@@ -107,14 +108,14 @@ const TypedText = () => {
                 timerRef.current = setTimeout( () => {
                     indexRef.current++;
                     dispatch( { type: 'newline' } )
-                }, 1300 )
+                }, 1000 )
             }
             else {
                 dispatch( { type: 'blink' } )
                 clearTimeout( timerRef.current )
                 timerRef.current = setTimeout( () => {
                     dispatch( { type: 'hide' } )
-                }, 1300 )
+                }, 1000 )
             }
         }
         typedText()
