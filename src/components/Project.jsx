@@ -15,17 +15,12 @@ gap:clamp(10px,5vw,15px);
     max-width: 700px;
 }
 width: 100%;
-box-shadow: var(--color-stroke) 0px 0px 5px;
-border-bottom: 2px solid var(--color-stroke);
 padding:30px;
-&:hover{
-    box-shadow: var(--color-stroke) 0px 0px 10px;
-}
 @media only screen and (max-width:500px)
 {
     padding:20px;
 }
-transform: translateY(10%);
+transform: translateY(10vw);
 opacity: 0;
 transition: transform .8s 0ms ease-out,opacity 1s 0ms ease-out;
 `;
@@ -45,35 +40,13 @@ line-height: calc(1em + 1rem);
 export const Link = styled.a`
 cursor:pointer;
 text-decoration: none;
-border:2px solid var(--red);
-padding:14px;
+padding-right:14px;
 width: fit-content;
 border-radius: 4px;
 color:var(--red);
 transition: background-color .5s 0s ease;
-&:hover{
-    background-color:var(--red);
-    color:white;
-}
-&:hover > div > svg{
-    fill:white;
-}
 & > div > svg{
     fill:var(--red);
-}
-&:hover > div > svg{
-    fill:white;
-}
-&:hover > div {
-    color:white;
-}
-@media only screen and (max-width:600px){
-    color:white;
-    background-color: var(--red);
-    padding:14px;
-    & > div > svg{
-      fill:white;
-    }
 }
 `
 const ButtonContainer = styled.div`
@@ -87,23 +60,12 @@ display:flex;
 align-items:center;
 font-size: clamp(18px,3vw,20px);
 `
-const Video = styled.video`
-width: 100%;
-object-fit: cover;
-height:clamp(300px,40vw,360px);
-box-shadow: #f0eeee 0px 0rem 5px;
-@media only screen and (max-width:500px)
-{
-    object-fit: contain;
-    height:55vw;
-}
-`
 const Project = ( { project } ) => {
 
-    const { name, about, siteLink, githubLink, video } = project;
+    const { name, about, siteLink, githubLink } = project;
     const ref = useRef( null );
     const callback = ( entries, observer ) => {
-        if ( entries[0].intersectionRatio >= 0.1 ) {
+        if ( entries[0].intersectionRatio >= 0.6 ) {
             entries[0].target.style.transform = "translateY(0)";
             entries[0].target.style.opacity = 1;
         }
@@ -112,7 +74,7 @@ const Project = ( { project } ) => {
         const options = {
             root: null,
             rootMargin: "0px",
-            threshold: 0.1
+            threshold: 0.6
         };
         const observer = new IntersectionObserver( callback, options );
         observer.observe( ref.current );
@@ -121,15 +83,14 @@ const Project = ( { project } ) => {
         <Container ref={ref}>
             <Title>{name}</Title>
             <Content>{about}</Content>
-            {video && <Video loop muted autoPlay="true" src={video}></Video>}
             <ButtonContainer>
                 {
                     siteLink &&
-                    <Link target="_blank" href={siteLink}><LinkContent>Live Site&nbsp; <LinkIcon /></LinkContent></Link>
+                    <Link target="_blank" href={siteLink}><LinkContent>Live Site&nbsp;<LinkIcon /></LinkContent></Link>
                 }
                 {
                     githubLink &&
-                    <Link target="_blank" href={githubLink}><LinkContent>Code &nbsp; <LinkIcon /></LinkContent></Link>
+                    <Link target="_blank" href={githubLink}><LinkContent>Code&nbsp;<LinkIcon /></LinkContent></Link>
                 }
             </ButtonContainer>
         </Container>

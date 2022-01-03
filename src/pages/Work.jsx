@@ -35,7 +35,7 @@ const Projects = styled.div`
 display: flex;
 flex-wrap: wrap;
 justify-content: center;
-gap:40px;
+gap:30px;
 width:100%;
 `
 const projects = [
@@ -43,14 +43,14 @@ const projects = [
     id: 1,
     name: 'Portfolio Website',
     video: portfolio,
-    about: 'A Website to present my skills and projects I have done',
+    about: 'A responsive site to present my skills and projects I have done.Built using react and deployed on netlify with a custom domain.',
     githubLink: 'https://github.com/shapaaa/Portfolio-project'
   },
   {
     id: 2,
     name: 'Weather Application',
     video: weather,
-    about: "A responsive web application to show weather data based on current location.Also user can get weather data about specific city by search",
+    about: "A responsive web application to show weather data based on current location.Search autocomplete can be used to get data based on specific city.",
     siteLink: 'https://weatherwebap.netlify.app/',
     githubLink: 'https://github.com/shapaaa/Weather-app'
   },
@@ -64,21 +64,21 @@ const projects = [
     id: 4,
     name: 'WordCamp Events Application',
     video: wordcamp,
-    about: 'A web app to find wordcamp events happening all over the world using rest apis as data source',
+    about: 'A web app to find wordcamp events happening all over the world using rest apis as data source.',
     siteLink: 'https://wordcamp-central.netlify.app/',
     githubLink: 'https://github.com/shapaaa/WordCamp-Central-site'
   },
   {
     id: 5,
     name: 'Yelp Clone',
-    about: 'A website where people can find reviews about hotels.Also user can add new hotels and reviews about them.Built using React, Node, Postgres db.Used node-pg as a connector.',
+    about: 'A website where people can find reviews about hotels. Also user can add new hotels and reviews about them.Built using React, Node, Postgres db. Used node-pg as a connector.',
     githubLink: 'https://github.com/shapaaa/yelp-client'
   },
   {
     id: 6,
     name: 'Adhelp.io',
     video: adhelp,
-    about: 'Responsive landing page with grid layout.Built using Html, Css , Chart.js library',
+    about: 'Responsive landing page with grid layout.Built using Html, Css , Chart.js library.',
     siteLink: 'https://adhelp.netlify.app/',
     githubLink: 'https://github.com/shapaaa/Adhelp.io'
   },
