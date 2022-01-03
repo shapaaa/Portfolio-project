@@ -112,7 +112,7 @@ const ListComponent = ( { animateFalse, animate, smallscreen, largescreen } ) =>
                 <NavLink to='/work'>Work</NavLink>
             </ListElement>
             <ListElement animated={animate} blogs>
-                <Resume target="_blank" href='https://tinyurl.com/shardul-resume'>Resume</Resume>
+                <Resume target="_blank" href='https://drive.google.com/file/d/1I4CZiW_Z3gZxtly-y9tOFc1dvVlzPmSa/view?usp=sharing'>Resume</Resume>
             </ListElement>
         </List>
     )
