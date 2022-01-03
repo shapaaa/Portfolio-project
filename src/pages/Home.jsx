@@ -64,7 +64,7 @@ const Home = () => {
     return (
         <Container>
             <Image src={Emoji} />
-            <Info>Software Engineering Intern @rtCamp</Info>
+            <Info>Former Intern @rtCamp | Web Enthusiast </Info>
             <Wrapper>
                 <Info>Programmer • Developer • Learner </Info>
                 <Info>&nbsp;• Amateur Blogger</Info>
